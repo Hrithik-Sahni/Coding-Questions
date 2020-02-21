@@ -2,16 +2,18 @@
 #include <climits>
 using namespace std;;
 
+template <typename T>
+
 class Stack{
 
-    int * data;
+    T * data;
     int nextIndex;
     int capacity;
 
 public:
     Stack()
     {
-        data = new int[4];
+        data = new T[4];
         nextIndex = 0;
         capacity = 4;
     }
@@ -29,10 +31,10 @@ public:
         return false;
     }
 
-    void push(int element)
+    void push(T element)
     {
         if(nextIndex == capacity){
-            int * newData = new int[2*capacity];
+            T * newData = new T[2*capacity];
             
             for(int i =0; i < capacity; i++)
                 newData[i] = data[i];
@@ -45,22 +47,22 @@ public:
         nextIndex ++;
     }
 
-    int pop()
+    T pop()
     {
         if(isEmpty()){
             cout << "UnderFlow" << endl;
-            return INT_MIN;
+            return 0;
         }
 
         nextIndex -- ;  
         return data[nextIndex]; 
     }
 
-    int top()
+    T top()
     {
         if(isEmpty()){
             cout << "Empty Stack";
-            return INT_MIN;
+            return 0;
         }
 
         return data[nextIndex - 1];
@@ -69,17 +71,19 @@ public:
 
 int main()
 {
-    Stack s;
+    Stack <float> s;
 
-    s.push(10);
-    s.push(20);
-    s.push(30);
-    s.push(40);
-    s.push(50);
+    s.push(10.1);
+    s.push(20.5);
+    s.push(30.8);
+    s.push(40.4);
+    s.push(50.3);
 
     cout << s.top() << endl;
 
     cout << s.pop() << endl;
+    
+    cout << s.top() << endl;
     cout << s.pop() << endl;
     cout << s.pop() << endl;
 
