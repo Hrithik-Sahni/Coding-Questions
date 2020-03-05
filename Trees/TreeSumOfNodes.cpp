@@ -4,6 +4,19 @@
 #include <queue>
 using namespace std;
 
+
+int sumOfNodes(TreeNode<int>* root) {
+
+    int sum = 0;
+    for(int i = 0 ; i < root -> children.size(); i++)
+    {
+        sum += sumOfNodes(root -> children[i]);
+    }
+    return (sum + root->data);
+    
+}
+
+
 TreeNode<int>* takeInputLevelWise()             //Printing LevelWise Using Queue
 {
     int data;
@@ -39,26 +52,9 @@ TreeNode<int>* takeInputLevelWise()             //Printing LevelWise Using Queue
     return root;
 }
 
-TreeNode<int>* takeInput(){
 
-    int rootData;
-    cout << "Enter data" << endl;
-    cin >> rootData;
 
-    TreeNode<int>* root = new TreeNode<int>(rootData);
 
-    int n;
-    cout << "Enter the number of children of " << rootData << endl;
-    cin >> n;
-
-    for(int i = 0 ; i < n; i++)
-    {
-        TreeNode<int>* child = takeInput();  //Recursive Call
-        root->children.push_back(child);   //Connect with root
-    }
-
-    return root;
-}
 
 void printTree(TreeNode<int>* root)
 {
@@ -85,6 +81,9 @@ int main()
     // root->children.push_back(node2);
 
     TreeNode<int>* root = takeInputLevelWise();
-
     printTree(root);
+
+    int sum = sumOfNodes(root);
+    cout << "Sum is :" << sum;
+    
 }
