@@ -4,6 +4,25 @@
 #include <queue>
 using namespace std;
 
+
+void PrintDepth(TreeNode<int>* root , int k)
+{
+    if(root == NULL)
+        return;
+
+    if(k == 0){
+
+        cout << root -> data;
+        return;
+    }
+
+    for(int i = 0 ; i < root -> children.size() ; i ++)
+    {
+        PrintDepth(root -> children[i] , k - 1);
+    }
+}
+
+
 TreeNode<int>* takeInputLevelWise()             //Printing LevelWise Using Queue
 {
     int data;
@@ -27,34 +46,13 @@ TreeNode<int>* takeInputLevelWise()             //Printing LevelWise Using Queue
         for(int i = 0 ; i < numChild; i ++)
         {
             int childData;
-            cout << "Enter data of " << i + 1 << " th child" << endl;
+            cout << "Enter data of " << i + 1 << "th child" << endl;
             cin >> childData;
 
             TreeNode<int>* child = new TreeNode<int>(childData);
             front->children.push_back(child);
             q.push(child);
         }
-    }
-
-    return root;
-}
-
-TreeNode<int>* takeInput(){
-
-    int rootData;
-    cout << "Enter data" << endl;
-    cin >> rootData;
-
-    TreeNode<int>* root = new TreeNode<int>(rootData);
-
-    int n;
-    cout << "Enter the number of children of " << rootData << endl;
-    cin >> n;
-
-    for(int i = 0 ; i < n; i++)
-    {
-        TreeNode<int>* child = takeInput();  //Recursive Call
-        root->children.push_back(child);   //Connect with root
     }
 
     return root;
@@ -85,6 +83,10 @@ int main()
     // root->children.push_back(node2);
 
     TreeNode<int>* root = takeInputLevelWise();
-
     printTree(root);
+    int k; 
+    cout << "Print at Depth/Level " << endl;
+    cin >> k;
+    PrintDepth(root , k);
+    
 }
