@@ -43,11 +43,7 @@ void QuickSort(int arr[] , int si, int li)
     QuickSort(arr, c + 1, li);
 }
 void quickSort(int input[], int size) {
-  /* Don't write main().
-     Don't read input, it is passed as function argument.
-     Change in the given array itself.
-     Taking input and printing output is handled automatically.
-  */
+
     int si = 0 , li = size - 1;
     QuickSort(input, si, li);
 }
