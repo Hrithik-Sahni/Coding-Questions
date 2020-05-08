@@ -6,12 +6,14 @@ private:
     int nume;
     int deno;
 
+
 public:
     //PARAMETERIZED CONSTRUCTOR
     Fraction(int nume , int deno){
         this -> nume = nume;
         this -> deno = deno;
     }
+
 
     void print(){
         cout << nume << "/" << deno << endl;
