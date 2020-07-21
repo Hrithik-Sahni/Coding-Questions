@@ -1,18 +1,14 @@
-#include<iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
 int main()
 {
-	
-	int a,b;
-	
+    static int num = 8;
+	printf("%d" , num = num - 2);
 
-	cout<<"Hello World This is a Code"<<endl;
-	cin>>a>>b;
-	cout<<a<<endl<<b;
-	cout<<endl;
-	return 0;
-	
-
+	if(num)
+	{
+		main();
+	}
 }
